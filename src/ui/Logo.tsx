@@ -9,12 +9,12 @@ const Img = styled.img`
   width: auto;
 `;
 
-function Logo() {
+const Logo: React.FC = () => {
   return (
     <StyledLogo>
       <Img src="/logo-light.png" alt="Logo" />
     </StyledLogo>
   );
-}
+};
 
 export default Logo;

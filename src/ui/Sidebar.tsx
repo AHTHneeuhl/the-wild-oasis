@@ -13,13 +13,13 @@ const StyledSidebar = styled.aside`
   gap: 3.2rem;
 `;
 
-function Sidebar() {
+const Sidebar: React.FC = () => {
   return (
     <StyledSidebar>
       <Logo />
       <MainNav />
     </StyledSidebar>
   );
-}
+};
 
 export default Sidebar;
