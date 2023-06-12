@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-const Row = styled.div`
+type TRowProps = {
+  type?: "horizontal" | "vertical";
+};
+
+const Row = styled.div<TRowProps>`
   display: flex;
 
   ${(props) =>
