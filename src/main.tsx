@@ -2,10 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import GlobalStyles from "./styles/GlobalStyles.ts";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
-    <GlobalStyles />
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <GlobalStyles />
+    </QueryClientProvider>
   </React.StrictMode>
 );
