@@ -1,7 +1,10 @@
+import { InputHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
+type Orientation = "vertical" | "horizontal";
+
 type TStyledFormRowProps = {
-  orientation: "vertical" | "horizontal";
+  orientation?: Orientation;
 };
 
 const StyledFormRow = styled.div<TStyledFormRowProps>`
@@ -50,10 +53,21 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-const FormRow = ({ label, error, children, orientation }) => {
+type TProps = {
+  children: React.ReactElement<InputHTMLAttributes<HTMLInputElement>>;
+
+  label?: string;
+  error?: string;
+
+  orientation?: Orientation;
+};
+
+const FormRow: React.FC<TProps> = ({ label, error, children, orientation }) => {
+  const { id } = children.props;
+
   return (
     <StyledFormRow orientation={orientation}>
-      {label && <Label htmlFor={children.props.id}>{label}</Label>}
+      {label && <Label htmlFor={id}>{label}</Label>}
       {children}
       {error && <Error>{error}</Error>}
     </StyledFormRow>

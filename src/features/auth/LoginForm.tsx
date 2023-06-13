@@ -1,14 +1,17 @@
-import { useState } from "react";
-import Button from "../../ui/Button";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-function LoginForm() {
+import Button from "@/ui/Button";
+import Form from "@/ui/Form";
+import FormRow from "@/ui/FormRow";
+import Input from "@/ui/Input";
+
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit() {}
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -19,7 +22,9 @@ function LoginForm() {
           // This makes this form better for password managers
           autoComplete="username"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
         />
       </FormRow>
       <FormRow label="Password" orientation="vertical">
@@ -28,7 +33,9 @@ function LoginForm() {
           id="password"
           autoComplete="current-password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
         />
       </FormRow>
       <FormRow orientation="vertical">
@@ -36,6 +43,6 @@ function LoginForm() {
       </FormRow>
     </Form>
   );
-}
+};
 
 export default LoginForm;
