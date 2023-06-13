@@ -1,6 +1,13 @@
 import supabase from "./supabase";
 
-export async function getSettings() {
+export interface TSettings {
+  minBookingLength: number;
+  maxBookingLength: number;
+  maxNumberOfGuests: number;
+  breakfastPrice: number;
+}
+
+export const getSettings = async () => {
   const { data, error } = await supabase.from("settings").select("*").single();
 
   if (error) {
@@ -8,13 +15,13 @@ export async function getSettings() {
     throw new Error("Settings could not be loaded");
   }
   return data;
-}
+};
 
 // We expect a newSetting object that looks like {setting: newValue}
-export async function updateSetting(newSetting) {
+export const updateSetting = async (settings: TSettings) => {
   const { data, error } = await supabase
     .from("settings")
-    .update(newSetting)
+    .update(settings)
     // There is only ONE row of settings, and it has the ID=1, and so this is the updated one
     .eq("id", 1)
     .single();
@@ -24,4 +31,4 @@ export async function updateSetting(newSetting) {
     throw new Error("Settings could not be updated");
   }
   return data;
-}
+};
