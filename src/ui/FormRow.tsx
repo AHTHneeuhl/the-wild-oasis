@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-const StyledFormRow = styled.div`
+type TStyledFormRowProps = {
+  orientation: "vertical" | "horizontal";
+};
+
+const StyledFormRow = styled.div<TStyledFormRowProps>`
   display: grid;
   align-items: center;
 
@@ -46,7 +50,7 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, error, children, orientation }) {
+const FormRow = ({ label, error, children, orientation }) => {
   return (
     <StyledFormRow orientation={orientation}>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}
@@ -54,6 +58,6 @@ function FormRow({ label, error, children, orientation }) {
       {error && <Error>{error}</Error>}
     </StyledFormRow>
   );
-}
+};
 
 export default FormRow;
