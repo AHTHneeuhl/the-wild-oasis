@@ -1,6 +1,7 @@
 import supabase, { supabaseUrl } from "./supabase";
 
 export interface TCabin {
+  id?: number;
   name: string;
   maxCapacity: number;
   regularPrice: number;
@@ -54,6 +55,20 @@ export const deleteCabin = async (id: number) => {
   if (error) {
     console.error(error.message);
     throw new Error("Cabin could not be deleted");
+  }
+
+  return data;
+};
+
+export const updateCabin = async (cabin: TCabin) => {
+  const { data, error } = await supabase
+    .from("cabins")
+    .update({ ...cabin })
+    .eq("id", cabin.id);
+
+  if (error) {
+    console.error(error.message);
+    throw new Error("Cabin could not be updated");
   }
 
   return data;
