@@ -8,13 +8,18 @@ import Button from "ui/Button";
 import FileInput from "ui/FileInput";
 import { useEditCabin } from "./useEditCabin";
 import { Textarea } from "ui/Textarea";
+import { TCabin } from "../../services/apiCabins";
 
 // We use react-hook-form to make working with complex and REAL-WORLD forms a lot easier. It handles stuff like user validation and errors. manages the form state for us, etc
 // Validating the user’s data passed through the form is a crucial responsibility for a developer.
 // React Hook Form takes a slightly different approach than other form libraries in the React ecosystem by adopting the use of uncontrolled inputs using ref instead of depending on the state to control the inputs. This approach makes the forms more performant and reduces the number of re-renders.
 
 // Receives closeModal directly from Modal
-function CreateCabinForm({ cabinToEdit, closeModal }) {
+type TProps = {
+  closeModal: () => void;
+  cabinToEdit?: TCabin;
+};
+const CreateCabinForm: React.FC<TProps> = ({ cabinToEdit, closeModal }) => {
   const { mutate: createCabin, isLoading: isCreating } = useCreateCabin();
   const { mutate: editCabin, isLoading: isEditing } = useEditCabin();
   const isWorking = isCreating || isEditing;
@@ -171,6 +176,6 @@ function CreateCabinForm({ cabinToEdit, closeModal }) {
       </FormRow>
     </Form>
   );
-}
+};
 
 export default CreateCabinForm;
