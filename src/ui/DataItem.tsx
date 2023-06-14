@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import styled from "styled-components";
 
 const StyledDataItem = styled.div`
@@ -20,16 +21,22 @@ const Label = styled.span`
   }
 `;
 
-function DataItem({ icon, label, children }) {
+type TProps = {
+  icon: IconType;
+  label: string;
+  children: React.ReactNode;
+};
+
+const DataItem: React.FC<TProps> = ({ icon: Icon, label, children }) => {
   return (
     <StyledDataItem>
       <Label>
-        {icon}
+        <Icon />
         <span>{label}</span>
       </Label>
       {children}
     </StyledDataItem>
   );
-}
+};
 
 export default DataItem;

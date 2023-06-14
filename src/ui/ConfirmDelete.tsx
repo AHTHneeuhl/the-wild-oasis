@@ -20,8 +20,22 @@ const StyledConfirmDelete = styled.div`
   }
 `;
 
-function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
-  function handleConfirmClick() {}
+type TProps = {
+  resource: string;
+  onConfirm: () => void;
+  disabled: boolean;
+  closeModal: () => void;
+};
+
+const ConfirmDelete: React.FC<TProps> = ({
+  resource,
+  onConfirm,
+  disabled,
+  closeModal,
+}) => {
+  const handleConfirmClick = () => {
+    onConfirm();
+  };
 
   return (
     <StyledConfirmDelete>
@@ -32,11 +46,11 @@ function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
       </p>
 
       <div>
-        <Button variation="secondary" onClick={closeModal}>
+        <Button variant="secondary" onClick={closeModal}>
           Cancel
         </Button>
         <Button
-          variation="danger"
+          variant="danger"
           onClick={handleConfirmClick}
           disabled={disabled}
         >
@@ -45,6 +59,6 @@ function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
       </div>
     </StyledConfirmDelete>
   );
-}
+};
 
 export default ConfirmDelete;
