@@ -25,7 +25,21 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-function Checkbox({ checked, onChange, disabled = false, id, children }) {
+type TProps = {
+  checked: boolean;
+  onChange: () => void;
+  disabled?: boolean;
+  id: string;
+  children: React.ReactNode;
+};
+
+const Checkbox: React.FC<TProps> = ({
+  checked,
+  onChange,
+  disabled = false,
+  id,
+  children,
+}) => {
   return (
     <StyledCheckbox>
       <input
@@ -38,6 +52,6 @@ function Checkbox({ checked, onChange, disabled = false, id, children }) {
       <label htmlFor={!disabled ? id : ""}>{children}</label>
     </StyledCheckbox>
   );
-}
+};
 
 export default Checkbox;
