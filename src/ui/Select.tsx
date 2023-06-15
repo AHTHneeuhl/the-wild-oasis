@@ -4,7 +4,7 @@ type TSelectProps = {
   type: "white" | "black";
 };
 
-export const StyledSelect = styled.select<TSelectProps>`
+const StyledSelect = styled.select<TSelectProps>`
   font-size: 1.4rem;
   padding: 0.8rem 1.2rem;
   border: 1px solid
@@ -17,3 +17,23 @@ export const StyledSelect = styled.select<TSelectProps>`
   font-weight: 500;
   box-shadow: var(--shadow-sm);
 `;
+
+type TProps = {
+  options: { value: string; label: string }[];
+  value: string;
+  onChange: (value: string) => void;
+};
+
+const Select: React.FC<TProps> = ({ options, value, onChange, ...props }) => {
+  return (
+    <StyledSelect value={value} onChange={onChange} {...props}>
+      {options.map((option) => (
+        <option value={option.value} key={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </StyledSelect>
+  );
+};
+
+export default Select;
