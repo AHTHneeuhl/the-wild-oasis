@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import { Flag } from 'ui/Flag';
+import { Flag } from "@/ui/Flag";
+import React from "react";
+import styled from "styled-components";
 
 const StyledGuestListItem = styled.li`
   display: grid;
@@ -25,14 +26,19 @@ const ID = styled.div`
   color: var(--color-grey-500);
 `;
 
-function GuestListItem({ guest, onClick }) {
+type TProps = {
+  guest: any;
+  onClick: (guest: any) => void;
+};
+
+const GuestListItem: React.FC<TProps> = ({ guest, onClick }) => {
   return (
-    <StyledGuestListItem onClick={() => onClick(guest)} role='button'>
+    <StyledGuestListItem onClick={() => onClick(guest)} role="button">
       <Flag src={guest.countryFlag} alt={`Flag of ${guest.nationality}`} />
       <div>{guest.fullName}</div>
       <ID>ID: {guest.nationalID}</ID>
     </StyledGuestListItem>
   );
-}
+};
 
 export default GuestListItem;
