@@ -4,13 +4,23 @@ import Button from "@/ui/Button";
 import Form from "@/ui/Form";
 import FormRow from "@/ui/FormRow";
 import Input from "@/ui/Input";
+import { useSignIn } from "@/hooks/auth";
+import SpinnerMini from "@/ui/SpinnerMini";
 
-const LoginForm = () => {
+const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { handleSignIn, isLoading } = useSignIn();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!email || !password) return;
+
+    handleSignIn({
+      email,
+      password,
+    });
   };
 
   return (
@@ -39,10 +49,12 @@ const LoginForm = () => {
         />
       </FormRow>
       <FormRow orientation="vertical">
-        <Button size="large">Login</Button>
+        <Button size="large" disabled={isLoading}>
+          {!isLoading ? "Log in" : <SpinnerMini />}
+        </Button>
       </FormRow>
     </Form>
   );
 };
 
-export default LoginForm;
+export default SignInForm;
