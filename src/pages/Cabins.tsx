@@ -1,14 +1,13 @@
-import AddCabin from "../features/cabins/AddCabin";
-import CabinTable from "../features/cabins/CabinTable";
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
+import { AddCabin, CabinTable, CabinTableOperations } from "@/features/cabins";
+import Heading from "@/ui/Heading";
+import Row from "@/ui/Row";
 
-function Cabins() {
+const Cabins: React.FC = () => {
   return (
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>Filter / Sort</p>
+        <CabinTableOperations />
       </Row>
       <Row>
         <CabinTable />
@@ -16,6 +15,6 @@ function Cabins() {
       </Row>
     </>
   );
-}
+};
 
 export default Cabins;

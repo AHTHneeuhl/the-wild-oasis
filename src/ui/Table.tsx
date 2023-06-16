@@ -90,8 +90,15 @@ const Header = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const Body = ({ children }: { children: React.ReactNode }) => {
-  return <StyledBody>{children}</StyledBody>;
+type TBodyProps = {
+  data: any[];
+  render: (item: any) => React.ReactNode;
+};
+
+const Body: React.FC<TBodyProps> = ({ data, render }) => {
+  if (!data.length) return <Empty>No data to show at the moment</Empty>;
+
+  return <StyledBody>{data.map(render)}</StyledBody>;
 };
 
 const Row = ({ children }: { children: React.ReactNode }) => {
