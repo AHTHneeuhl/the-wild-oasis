@@ -10,8 +10,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useDarkMode } from "../../context/DarkModeContext";
+import useDarkMode from "../../context/DarkModeContext";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
+import { TBookingsAfterDateResponse } from "@/services/apiBookings";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
@@ -24,7 +25,7 @@ const StyledSalesChart = styled(DashboardBox)`
 `;
 
 type TProps = {
-  bookings: TBooking[];
+  bookings: TBookingsAfterDateResponse[];
   numDays: number;
 };
 

@@ -22,11 +22,18 @@ type TProps = {
   options: { value: string; label: string }[];
   value: string;
   onChange: (value: string) => void;
+  type: "white" | "black";
 };
 
-const Select: React.FC<TProps> = ({ options, value, onChange, ...props }) => {
+const Select: React.FC<TProps> = ({
+  options,
+  value,
+  onChange,
+  type,
+  ...props
+}) => {
   return (
-    <StyledSelect value={value} onChange={onChange} {...props}>
+    <StyledSelect value={value} onChange={onChange} type={type} {...props}>
       {options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.label}

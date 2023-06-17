@@ -5,6 +5,7 @@ import SalesChart from "./SalesChart";
 import DurationChart from "./DurationChart";
 import TodayActivity from "../check-in-out/TodayActivity";
 import { useRecentBookings, useRecentStays } from "@/hooks/dashboard";
+import { useCabins } from "@/hooks/cabins";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -20,13 +21,15 @@ const DashboardLayout: React.FC = () => {
 
   if (isLoading1 || isLoading2 || isLoading3) return <Spinner />;
 
+  if (!bookings || !confirmedStays || !cabins) return null;
+
   return (
     <StyledDashboardLayout>
       <Stats
         bookings={bookings}
         confirmedStays={confirmedStays}
         numDays={numDays}
-        cabinCount={cabins.length}
+        cabinCount={cabins?.length}
       />
       <TodayActivity />
       <DurationChart confirmedStays={confirmedStays} />
