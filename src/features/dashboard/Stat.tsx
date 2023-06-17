@@ -50,7 +50,7 @@ const Value = styled.p`
 type TProps = {
   icon: JSX.Element;
   title: string;
-  value: string;
+  value: number | string;
   color: string;
 };
 const Stat: React.FC<TProps> = ({ icon, title, value, color }) => {

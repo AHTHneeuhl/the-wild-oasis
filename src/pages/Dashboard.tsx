@@ -1,13 +1,18 @@
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
+import { DashboardFilter, DashboardLayout } from "@/features/dashboard";
+import Heading from "@/ui/Heading";
+import Row from "@/ui/Row";
 
-function Dashboard() {
+const Dashboard: React.FC = () => {
   return (
-    <Row type="horizontal">
-      <Heading as="h1">Dashboard</Heading>
-      <p>TEST</p>
-    </Row>
+    <>
+      <Row type="horizontal">
+        <Heading as="h1">Dashboard</Heading>
+        <DashboardFilter />
+      </Row>
+
+      <DashboardLayout />
+    </>
   );
-}
+};
 
 export default Dashboard;

@@ -6,7 +6,7 @@ const useCheckout = () => {
   const queryClient = useQueryClient();
   const { notifyError, notifySuccess } = useNotification();
 
-  const { mutate: handleCheckout, isLoading: isCheckingOut } = useMutation({
+  const { mutate: handleCheckout, isLoading } = useMutation({
     mutationFn: (bookingId) =>
       updateBooking(bookingId, {
         status: "checked-out",
@@ -20,7 +20,7 @@ const useCheckout = () => {
     onError: () => notifyError("There was an error while checking out"),
   });
 
-  return { handleCheckout, isCheckingOut };
+  return { handleCheckout, isLoading };
 };
 
 export default useCheckout;

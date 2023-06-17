@@ -11,14 +11,13 @@ import {
 
 import Tag from "@/ui/Tag";
 import Menus from "@/ui/Menus";
-import Modal from "ui/Modal";
-import ConfirmDelete from "ui/ConfirmDelete";
-import Table from "ui/Table";
+import Modal from "@/ui/Modal";
+import ConfirmDelete from "@/ui/ConfirmDelete";
+import Table from "@/ui/Table";
 
-import { useDeleteBooking } from "features/bookings/useDeleteBooking";
-import { formatCurrency } from "utils/helpers";
-import { formatDistanceFromNow } from "utils/helpers";
-import { useCheckout } from "features/check-in-out/useCheckout";
+import { formatCurrency, formatDistanceFromNow } from "@/utils/helpers";
+import { useDeleteBooking } from "@/hooks/bookings";
+import { useCheckout } from "@/hooks/checkInOut";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
