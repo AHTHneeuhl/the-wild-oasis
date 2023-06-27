@@ -6,7 +6,7 @@ import Input from "@/ui/Input";
 import Button from "@/ui/Button";
 import FileInput from "@/ui/FileInput";
 
-function UpdateUserDataForm() {
+function UpdateUserForm() {
   // We don't need the loading state
   const {
     user: {
@@ -78,4 +78,4 @@ function UpdateUserDataForm() {
   );
 }
 
-export default UpdateUserDataForm;
+export default UpdateUserForm;

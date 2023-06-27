@@ -17,7 +17,7 @@ const Login: React.FC = () => {
   return (
     <LoginLayout>
       <Logo />
-      <Heading as="h4">Log in to your account</Heading>
+      <Heading as="h4">Sign in to your account</Heading>
       <SignInForm />
     </LoginLayout>
   );
